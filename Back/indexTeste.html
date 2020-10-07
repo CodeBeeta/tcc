@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<head>
+    <title>Teste</title>
+    <style>
+        table {
+           border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+    
+    <script src="../Front/jquery-3.4.1.min.js"></script>
+    <script src="ajax.js"></script>
+</head>
+<body>
+    <div id="divDados">
+        <h3>Dados do Cliente</h3>
+        <p>Id:</p>
+        <p>Nome:</p>
+        <p>Telefone:</p>
+        <p>Email:</p>
+    </div>
+
+    <div>
+        <h4>Novo Cliente</h4>
+        <input type="text" name="clienteNome" id="clienteNome" placeholder="Nome">
+        <input type="tel" name="clienteTelefone" id="clienteTelefone" placeholder="Telefone">
+        <input type="email" name="clienteEmail" id="clienteEmail" placeholder="Email">
+        <button id="cadastrarCliente">Cadastrar</button>
+    </div>
+    <div>
+        <h4>Novo Prato</h4>
+        <input type="text" name="pratoNome" id="pratoNome" placeholder="Nome">
+        <input type="number" name="pratoValor" id="pratoValor" placeholder="Valor">
+        <input type="text" name="pratoDescricao" id="pratoDescricao" placeholder="Descrição">
+        <button id="cadastrarPrato">Cadastrar</button>
+    </div>
+    <div>
+        <h4>Nova Promoção</h4>
+        <input type="number" name="promocaoIdPrato" id="promocaoIdPrato" placeholder="Id do Prato">
+        <br>
+        <p>Usar porcentagem?<input type="checkbox" name="promocaoIsPorcentagem" id="promocaoIsPorcentagem"></p>
+        <input type="number" name="promocaoValor" id="promocaoValor" placeholder="Desconto em Real">
+        <br>
+        <input type="number" name="promocaoValorFinal" id="promocaoValorFinal" placeholder="Valor do Prato com desconto">
+        <button id="cadastrarPromocao">Cadastrar</button>
+    </div>
+    <div>
+        <h4>Nova Mesa</h4>
+        <input type="number" name="mesaQtdCadeira" id="mesaQtdCadeira" placeholder="Qtd de Cadeira">
+        <button id="cadastrarMesa">Cadastrar</button>
+    </div>
+    <div>
+        <h4>Nova Reserva</h4>
+        <input type="datetime-local" name="reservaHInicio" id="reservaHInicio" placeholder="reservaHInicio">
+        <input type="datetime-local" name="reservaHTermino" id="reservaHTermino" placeholder="reservaHTermino">
+        <input type="datetime-local" name="reservaPagamento" id="reservaPagamento" placeholder="reservaPagamento">
+        <input type="number" name="reservaIdCliente" id="reservaIdCliente" placeholder="reservaIdCliente">
+        <input type="number" name="reservaIdMesa" id="reservaIdMesa" placeholder="reservaIdMesa">
+        <input type="number" name="reservaIdPrato" id="reservaIdPrato" placeholder="reservaIdPrato">
+        <button id="adicionarReservaPrato">Adicionar Prato</button>
+        <button id="cadastrarReserva">Cadastrar</button>
+
+        <div id="divRefeicaoReserva">
+            <table>
+                <tr><th>Id</th><th>Nome</th><th>Valor</th><th>Descricao</th></tr>
+            </table>
+        </div>
+    </div>
+
+    
+    <div id="divPrato">
+        <h3>Pratos</h3>
+        <table>
+            <tr><th>Id</th><th>Nome</th><th>Valor</th><th>Descricao</th></tr>
+        </table>
+    </div>
+    <div id="divCliente">
+        <h3>Clientes</h3>
+        <table>
+            <tr><th>Id</th><th>Nome</th><th>Email</th><th>Telefone</th></tr>
+        </table>
+    </div>
+    <div id="divMesa">
+        <h3>Mesa</h3>
+        <table>
+            <tr><th>Id</th><th>Qtd Cadeiras</th></tr>
+        </table>
+    </div>
+    <div id="divReserva">
+        <h3>Reserva</h3>
+        <table>
+            <tr><th>Id</th><th>Inicio</th><th>Termino</th><th>Pagamento</th><th>Id Cliente</th><th>Id Mesa</th></tr>
+        </table>
+    </div>
+    <div id="divRefeicao">
+        <h3>Refeicao</h3>
+        <table>
+            <tr><th>Id</th><th>Id Reserva</th><th>Id Prato</th></tr>
+        </table>
+    </div>
+    <div id="divPromocao">
+        <h3>Promocao</h3>
+        <table>
+            <tr><th>Id</th><th>Valor Real</th><th>Valor Porcentagem</th><th>Id Prato</th></tr>
+        </table>
+    </div>
+
+    <div>
+        <h4>Alterar Cliente</h4>
+        <input type="number" name="clienteId" id="altclienteId" placeholder="Id">
+        <input type="text" name="clienteNome" id="altclienteNome" placeholder="Nome">
+        <input type="tel" name="clienteTelefone" id="altclienteTelefone" placeholder="Telefone">
+        <input type="email" name="clienteEmail" id="altclienteEmail" placeholder="Email">
+        <button id="alterarCliente">Alterar</button>
+    </div>
+    <div>
+        <h4>Alterar Prato</h4>
+        <input type="number" name="pratoId" id="altpratoId" placeholder="Id">
+        <input type="text" name="pratoNome" id="altpratoNome" placeholder="Nome">
+        <input type="number" name="pratoValor" id="altpratoValor" placeholder="Valor">
+        <input type="text" name="pratoDescricao" id="altpratoDescricao" placeholder="Descrição">
+        <button id="alterarPrato">Alterar</button>
+    </div>
+    <div>
+        <h4>Alterar Promoção</h4>
+        <input type="number" name="promocaoId" id="altpromocaoId" placeholder="Id">
+        <input type="number" name="promocaoIdPrato" id="altpromocaoIdPrato" placeholder="Id do Prato">
+        <br>
+        <p>Usar porcentagem?<input type="checkbox" name="promocaoIsPorcentagem" id="altpromocaoIsPorcentagem"></p>
+        <input type="number" name="promocaoValor" id="altpromocaoValor" placeholder="Desconto em Real">
+        <br>
+        <input type="number" name="promocaoValorFinal" id="altpromocaoValorFinal" placeholder="Valor do Prato com desconto">
+        <button id="alterarPromocao">Alterar</button>
+    </div>
+    <div>
+        <h4>Alterar Mesa</h4>
+        <input type="number" name="mesaId" id="altmesaId" placeholder="Id">
+        <input type="number" name="mesaQtdCadeira" id="altmesaQtdCadeira" placeholder="Qtd de Cadeira">
+        <button id="alterarMesa">Alterar</button>
+    </div>
+
+    <div>
+        <h4>Deletar Cliente</h4>
+        <input type="number" name="delclienteId" id="delclienteId" placeholder="Id">
+        <button id="deletarCliente">Cadastrar</button>
+    </div>
+    <div>
+        <h4>Deletar Prato</h4>
+        <input type="number" name="delpratoId" id="delpratoId" placeholder="Id">
+        <button id="deletarPrato">Cadastrar</button>
+    </div>
+    <div>
+        <h4>Deletar Promoção</h4>
+        <input type="number" name="delpromocaoId" id="delpromocaoId" placeholder="Id">
+        <button id="deletarPromocao">Cadastrar</button>
+    </div>
+    <div>
+        <h4>Deletar Mesa</h4>
+        <input type="number" name="delmesaId" id="delmesaId" placeholder="Id">
+        <button id="deletarMesa">Cadastrar</button>
+    </div>
+    <div>
+        <h4>Deletar Reserva</h4>
+        <input type="number" name="delreservaId" id="delreservaId" placeholder="Id">
+        <button id="deletarReserva">Cadastrar</button>
+    </div>
+</body>
+</html>
