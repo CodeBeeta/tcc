@@ -3,7 +3,7 @@ $(function () {
 
 
     // estas montam um objeto e enviam via json para serem alterados no BD
-    function deletarCliente() {
+    window.deletarCliente = function () {
         let idCliente = $("#delclienteId").val();
 
         if (idCliente) {
@@ -18,7 +18,7 @@ $(function () {
 
             $.ajax({
                     method: "POST",
-                    url: urlController,
+                    url: window.urlController,
                     data: {
                         action: action,
                         data: JSON.stringify(cliente)
@@ -33,7 +33,7 @@ $(function () {
         }
     }
 
-    function deletarPrato() {
+    window.deletarPrato = function () {
         let idPrato = $("#delpratoId").val();
         let situacao = $("#delpratoAtivo").val();
 
@@ -42,7 +42,7 @@ $(function () {
 
         $.ajax({
                 method: "POST",
-                url: urlController,
+                url: "../Back/update/desativarPrato.php",
                 data: {
                     action: action,
                     data: JSON.stringify(prato)
@@ -59,7 +59,7 @@ $(function () {
 
     }
 
-    function deletarUsuario() {
+    window.deletarUsuario = function () {
         let idUser = $("#deluserId").val();
         let situacao = $("#deluserAtivo").val();
 
@@ -68,7 +68,7 @@ $(function () {
 
         $.ajax({
                 method: "POST",
-                url: urlController,
+                url: "../Back/update/desativarUsuario.php",
                 data: {
                     action: action,
                     data: JSON.stringify(user)
@@ -85,7 +85,7 @@ $(function () {
 
     }
 
-    function deletarMesa() {
+    window.deletarMesa = function () {
         let idMesa = $("#delmesaId").val();
         let situacao = $("#delmesaAtivo").val();
 
@@ -96,7 +96,7 @@ $(function () {
 
         $.ajax({
                 method: "POST",
-                url: urlController,
+                url: "../Back/update/desativarMesa.php",
                 data: {
                     action: action,
                     data: JSON.stringify(mesa)
@@ -113,7 +113,7 @@ $(function () {
 
     }
 
-    function deletarReserva() {
+    window.deletarReserva = function () {
         let idReserva = $("#delreservaId").val();
 
         if (idReserva) {
@@ -130,7 +130,7 @@ $(function () {
 
             $.ajax({
                     method: "POST",
-                    url: urlController,
+                    url: window.urlController,
                     data: {
                         action: action,
                         data: JSON.stringify(reserva)
@@ -145,7 +145,7 @@ $(function () {
         }
     }
 
-    function deletarPromocao() {
+    window.deletarPromocao = function () {
         let idPromo = $("#delpromoId").val();
         let situacao = $("#delpromoAtivo").val();
 
@@ -157,7 +157,7 @@ $(function () {
 
             $.ajax({
                     method: "POST",
-                    url: urlController,
+                    url: "../Back/update/desativarPromocao.php",
                     data: {
                         action: action,
                         data: JSON.stringify(promocao)

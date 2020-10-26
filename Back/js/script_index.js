@@ -1,4 +1,23 @@
 $(document).ready(function () {
+    $('.g-signin2').css('display', 'none');
+    $("#google_login").click(function (e) {
+        e.preventDefault();
+        $('.abcRioButtonContentWrapper').click();
+        Swal.fire({
+            title: 'Carregando...',
+            // html: 'I will close in <b></b> milliseconds.',
+            timerProgressBar: true,
+            allowOutsideClick: false,
+            willOpen: () => {
+                Swal.showLoading()
+            },
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log('I was closed by the timer')
+            }
+        })
+    });
 
     $("#cadastrarPrato").click(function () {
         cadastrarPrato();
@@ -26,7 +45,7 @@ $(document).ready(function () {
         alterarPrato();
     });
     $("#alterarUsuario").click(function () {
-        alterarUsuario();
+        window.alterarUsuario();
     });
     $("#alterarMesa").click(function () {
         alterarMesa()

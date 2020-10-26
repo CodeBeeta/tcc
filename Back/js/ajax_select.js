@@ -6,13 +6,12 @@ $(function () {
 
         $.ajax({
                 method: "POST",
-                url: urlController,
+                url: window.urlController,
                 data: {
                     action: action
                 },
                 success: function (response) {
                     let array = JSON.parse(response);
-                    // console.table(array);
 
                     pratos = array;
 
@@ -21,7 +20,8 @@ $(function () {
                     // let table = document.createElement("table");
                     let table = $(".tablePrato");
 
-                    array.forEach(element => {
+                    Object.keys(pratos).forEach(element => {
+                        element = pratos[element];
                         // console.table(element);
                         // criando elementos da tabela
                         let tr = document.createElement("div");
@@ -63,7 +63,7 @@ $(function () {
                         tr.append(tdAtivo);
                         tr.append(tdEditar);
 
-                        table.append(tr);
+                        // table.append(tr);
                         // divPrato.append(table);
 
 
@@ -92,7 +92,7 @@ $(function () {
 
         $.ajax({
                 method: "POST",
-                url: urlController,
+                url: window.urlController,
                 data: {
                     action: action
                 },
@@ -106,8 +106,8 @@ $(function () {
                     // console.log(divCliente);
                     // let table = document.createElement("table");
                     let table = $("#divCliente table");
-
-                    array.forEach(element => {
+                    Object.keys(array).forEach(element => {
+                        element = array[element];
                         let tr = document.createElement("tr");
 
                         let tdId = document.createElement("td");
@@ -146,7 +146,7 @@ $(function () {
 
         $.ajax({
                 method: "POST",
-                url: urlController,
+                url: window.urlController,
                 data: {
                     action: action
                 },
@@ -159,7 +159,8 @@ $(function () {
                     let divMesa = $("#divMesa");
                     let table = $("#divMesa table");
 
-                    array.forEach(element => {
+                    Object.keys(array).forEach(element => {
+                        element = array[element];
                         let tr = document.createElement("tr");
 
                         let tdId = document.createElement("td");
@@ -190,7 +191,7 @@ $(function () {
 
         $.ajax({
                 method: "POST",
-                url: urlController,
+                url: window.urlController,
                 data: {
                     action: action
                 },
@@ -250,40 +251,42 @@ $(function () {
 
         $.ajax({
                 method: "POST",
-                url: urlController,
+                url: window.urlController,
                 data: {
                     action: action,
                     id_reserva: id_reserva
                 },
                 success: function (response) {
-                    // console.table(JSON.parse(response));
-                    array = JSON.parse(response);
+                    if (response != 'null') {
+                        // console.table(JSON.parse(response));
+                        array = JSON.parse(response);
 
-                    let divRefeicao = $("#divRefeicao");
-                    let table = $("#divRefeicao table");
+                        let divRefeicao = $("#divRefeicao");
+                        let table = $("#divRefeicao table");
+                        Object.keys(array).forEach(element => {
+                            element = array[element];
+                            let tr = document.createElement("tr");
 
-                    array.forEach(element => {
-                        let tr = document.createElement("tr");
+                            let tdId = document.createElement("td");
+                            let tdReserva = document.createElement("td");
+                            let tdPrato = document.createElement("td");
 
-                        let tdId = document.createElement("td");
-                        let tdReserva = document.createElement("td");
-                        let tdPrato = document.createElement("td");
+                            let textId = document.createTextNode(element.id_refeicao);
+                            let textReserva = document.createTextNode(element.id_reserva);
+                            let textPrato = document.createTextNode(element.id_prato);
 
-                        let textId = document.createTextNode(element.id_refeicao);
-                        let textReserva = document.createTextNode(element.id_reserva);
-                        let textPrato = document.createTextNode(element.id_prato);
+                            tdId.append(textId);
+                            tdReserva.append(textReserva);
+                            tdPrato.append(textPrato);
 
-                        tdId.append(textId);
-                        tdReserva.append(textReserva);
-                        tdPrato.append(textPrato);
+                            tr.append(tdId);
+                            tr.append(tdReserva);
+                            tr.append(tdPrato);
 
-                        tr.append(tdId);
-                        tr.append(tdReserva);
-                        tr.append(tdPrato);
-
-                        table.append(tr);
-                        divRefeicao.append(table);
-                    });
+                            table.append(tr);
+                            divRefeicao.append(table);
+                        });
+                    }
                 }
             })
             .fail(function (response) {
@@ -297,7 +300,7 @@ $(function () {
 
         $.ajax({
                 method: "POST",
-                url: urlController,
+                url: window.urlController,
                 data: {
                     action: action
                 },
@@ -310,7 +313,8 @@ $(function () {
                     let divPromocao = $("#divPromocao");
                     let table = $("#divPromocao table");
 
-                    array.forEach(element => {
+                    Object.keys(array).forEach(element => {
+                        element = array[element];
                         let tr = document.createElement("tr");
 
                         let tdId = document.createElement("td");
@@ -341,6 +345,60 @@ $(function () {
             .fail(function (response) {
                 console.log(response);
             })
+    }
+
+    window.selectUserGoogle = function (cliente) {
+        $.ajax({
+                method: "POST",
+                url: '../Back/select/selectUserEmail.php',
+                data: {
+                    data: JSON.stringify(cliente)
+                },
+                success: function (response) {
+                    if (response == "1") {
+                        new Promise(function (resolve, reject) {
+                            swal.close();
+                            resolve();
+                        }).then(() => {
+                            $("#etapa-realiza-login").fadeOut();
+                            setTimeout(function () {
+                                $("#etapa-pessoas").fadeIn();
+                                $("#etapa-pessoas").css('display', 'flex');
+                            }, 500);
+                        });
+                    } else {
+                        setTimeout(function () {
+                            new Promise(function (resolve, reject) {
+                                swal.close();
+                                resolve();
+                            }).then(() => {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops!',
+                                    text: 'O Usuário não foi encontrado, tente novamente!',
+                                }).then(() => {
+                                    signOut();
+                                });
+                            });
+                        }, 1500);
+                    }
+                }
+            })
+            .fail(function (response) {
+                console.log(response);
+                new Promise(function (resolve, reject) {
+                    swal.close();
+                    resolve();
+                }).then(() => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops!',
+                        text: 'Erro ao entrar em contato com o servidor, tente novamente!',
+                    }).then(() => {
+                        signOut();
+                    });
+                });
+            });
     }
     // para guardar os pratos
     var pratos = Array();

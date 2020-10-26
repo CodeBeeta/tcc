@@ -1,6 +1,6 @@
 $(function () {
     // estas montam um objeto e enviam via json para ser salvo no BD
-    window.cadastrarCliente = function cadastrarCliente() {
+    window.cadastrarCliente = function () {
         let nome = $("#clienteNome").val();
         let telefone = $("#clienteContato").val();
         let email = $("#clienteEmail").val();
@@ -18,6 +18,7 @@ $(function () {
                     },
                     success: function (response) {
                         console.table(response);
+                        alert("Cliente cadastrado com sucesso!");
                         constroiSessao();
                     }
                 })
@@ -27,7 +28,7 @@ $(function () {
         }
     }
 
-    function constroiSessao() {
+    window.constroiSessao = function () {
         let nome = $("#clienteNome").val();
         let telefone = $("#clienteContato").val();
         let email = $("#clienteEmail").val();
@@ -52,7 +53,7 @@ $(function () {
             })
     }
 
-    function cadastrarPrato() {
+    window.cadastrarPrato = function () {
         let nome = $("#pratoNome").val();
         let valor = $("#pratoValor").val();
         let descricao = $("#pratoDescricao").val();
@@ -65,7 +66,7 @@ $(function () {
 
             $.ajax({
                     method: "POST",
-                    url: urlController,
+                    url: "../Back/create/insertNewPrato.php",
                     data: {
                         action: action,
                         data: JSON.stringify(prato)
@@ -82,7 +83,7 @@ $(function () {
         }
     }
 
-    function cadastrarUsuario() {
+    window.cadastrarUsuario = function () {
         let nome = $("#usuarioNome").val();
         let login = $("#usuarioLogin").val();
         let senha = $("#usuarioSenha").val();
@@ -96,7 +97,7 @@ $(function () {
 
             $.ajax({
                     method: "POST",
-                    url: urlController,
+                    url: "../Back/create/insertNewUsuario.php",
                     data: {
                         action: action,
                         data: JSON.stringify(user)
@@ -113,7 +114,7 @@ $(function () {
         }
     }
 
-    function cadastrarMesa() {
+    window.cadastrarMesa = function () {
         let numero = $("#mesaNumero").val();
         let qt_cadeira = $("#mesaCadeira").val();
         let desc = $("#mesaDesc").val();
@@ -126,7 +127,7 @@ $(function () {
 
             $.ajax({
                     method: "POST",
-                    url: urlController,
+                    url: "../Back/create/insertNewMesa.php",
                     data: {
                         action: action,
                         data: JSON.stringify(mesa)
@@ -143,7 +144,7 @@ $(function () {
         }
     }
 
-    function cadastrarReserva() {
+    window.cadastrarReserva = function () {
         let inicio = $("#reservaHInicio").val();
         let termino = $("#reservaHTermino").val();
         let idCliente = $("#reservaIdCliente").val();
@@ -178,7 +179,7 @@ $(function () {
 
             $.ajax({
                     method: "POST",
-                    url: urlController,
+                    url: window.urlController,
                     data: {
                         action: action,
                         data: JSON.stringify(reserva)
@@ -193,7 +194,7 @@ $(function () {
         }
     }
 
-    function cadastrarPromocao() {
+    window.cadastrarPromocao = function () {
         //let isPorcentagem = $("#promocaoIsPorcentagem:checked").val()
         let nome = $("#promoNome").val();
         let descricao = $("#promoDesc").val()
@@ -207,7 +208,7 @@ $(function () {
 
             $.ajax({
                     method: "POST",
-                    url: urlController,
+                    url: "../Back/create/insertNewPromocao.php",
                     data: {
                         action: action,
                         data: JSON.stringify(promocao)

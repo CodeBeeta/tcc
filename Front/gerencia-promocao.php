@@ -21,9 +21,9 @@ $promos = $base->verListaPromocao();
 <section>
 	<div class="container">
 		<div class="row">
-			
+
 			<div class="table tableMesa">
-    
+
 			    <div class="row header">
 			      <div class="cell">
 			        Nome
@@ -50,22 +50,22 @@ $promos = $base->verListaPromocao();
 			        <span id="<?php echo 'desc-'.$promo['id'] ?>"><?php echo $promo['descricao']; ?></span>
 			      </div>
 			      <div class="cell" >
-			        R$ <span id="<?php echo 'valor-'.$promo['id'] ?>"><?php echo $promo['valor']; ?></span>
+			        <span id="<?php echo 'valor-'.$promo['id'] ?>"><?php echo "R$ " . number_format($promo['valor'], 2, ",", "."); ?></span>
 			      </div>
 			      <div class="cell">
 			      	<a href="#" class="desativarPromocao" data-id='<?php echo $promo['id'];?>' data-ativo='<?php echo ($promo['ativo']==1) ? 0 : 1;  ?>' >
 			      		<?php echo ($promo['ativo']==1) ? 'Ativo' : 'Desativado';  ?>
-			      	</a>	        
+			      	</a>
 			      </div>
 			      <div class="cell">
 			      	<a href="#" class="atualizar" data-id='<?php echo $promo['id'];?>' > Editar </a>
 			      </div>
 			    </div>
-				
+
 
 
 			<?php } ?>
-	    
+
 			</div>
 
 			<div style="margin: 0 auto;">
@@ -97,7 +97,7 @@ $promos = $base->verListaPromocao();
 			    <!-- <input type="text" class="form-control" id="descMesa" name="descMesa" > -->
 			  </div>
 			  <input type="hidden" name="idPromo" id='idPromo' value="" >
-			  <button type="button" class="blur-hover yes-button btn-acao submit" style="padding: 10px 25px;" id="alterarPromocao">Alterar</button> 
+			  <button type="button" class="blur-hover yes-button btn-acao submit" style="padding: 10px 25px;" id="alterarPromocao">Alterar</button>
 			</form>
 		</div>
 	</div>
@@ -137,7 +137,7 @@ $promos = $base->verListaPromocao();
 		$('#descPromo').val($(desc).html());
 		$('#valorPromo').val($(valor).html());
 		$('#idPromo').val(id);
-	
+
 	});
 
 </script>

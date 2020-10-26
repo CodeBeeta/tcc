@@ -10,8 +10,12 @@ $senha = md5($cliente['senha']);
 
 try {
 
-	$stmt = $conn->prepare('SELECT id_cliente FROM cliente where nm_login = :login and cd_senha = :senha');
+	$stmt = $conn->prepare('SELECT id_cliente FROM cliente where
+		nm_login = :login and cd_senha = :senha
+		OR
+		nm_email_cliente = :nm_email_cliente and cd_senha = :senha');
 	$stmt->bindValue(':login', $login);
+	$stmt->bindValue(':nm_email_cliente', $cliente['login']);
 	$stmt->bindValue(':senha', $senha);
 	$stmt->execute();
 

@@ -1,5 +1,5 @@
 <?php
-include('connection.php');
+include('../connection.php');
 session_start();
 
 $cliente = json_decode($_POST['data'], true);
@@ -28,5 +28,5 @@ try {
         }
 
 } catch (Exception $e) {
-	throw new MyDatabaseException($Exception->getMessage(), $Exception->getCode());
+	throw new MyDatabaseException($e->getMessage(), $e->getCode());
 }

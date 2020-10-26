@@ -1,6 +1,6 @@
 $(function () {
     // estas montam um objeto e enviam via json para serem alterados no BD
-    function alterarCliente() {
+    window.alterarCliente = function () {
         let id = $("#altclienteId").val();
         let nome = $("#altclienteNome").val();
         let telefone = $("#altclienteTelefone").val();
@@ -12,7 +12,7 @@ $(function () {
 
             $.ajax({
                     method: "POST",
-                    url: urlController,
+                    url: window.urlController,
                     data: {
                         action: action,
                         data: JSON.stringify(cliente)
@@ -27,7 +27,7 @@ $(function () {
         }
     }
 
-    function alterarPrato() {
+    window.alterarPrato = function () {
         let id = $("#codigoPrato").val();
         let nome = $("#nomePrato").val();
         let valor = $("#valorPrato").val();
@@ -39,7 +39,7 @@ $(function () {
 
             $.ajax({
                     method: "POST",
-                    url: urlController,
+                    url: "../Back/update/updatePrato.php",
                     data: {
                         action: action,
                         data: JSON.stringify(prato)
@@ -56,7 +56,7 @@ $(function () {
         }
     }
 
-    function alterarUsuario() {
+    window.alterarUsuario = function () {
         let id = $("#idUsuario").val();
         let nome = $("#nomeUsuario").val();
         let login = $("#loginUsuario").val();
@@ -68,7 +68,7 @@ $(function () {
 
             $.ajax({
                     method: "POST",
-                    url: urlController,
+                    url: "../Back/update/updateUsuario.php",
                     data: {
                         action: action,
                         data: JSON.stringify(usuario)
@@ -85,7 +85,7 @@ $(function () {
         }
     }
 
-    function alterarMesa() {
+    window.alterarMesa = function () {
         let id = $("#idMesa").val();
         let numero = $("#numeroMesa").val();
         let qt_cadeira = $("#cadeiraMesa").val();
@@ -99,7 +99,7 @@ $(function () {
 
             $.ajax({
                     method: "POST",
-                    url: urlController,
+                    url: "../Back/update/updateMesa.php",
                     data: {
                         action: action,
                         data: JSON.stringify(mesa)
@@ -116,7 +116,7 @@ $(function () {
         }
     }
 
-    function alterarReserva() {
+    window.alterarReserva = function () {
         let id = $("#altreservaId").val();
         let inicio = $("#altreservaHInicio").val();
         let termino = $("#altreservaHTermino").val();
@@ -145,7 +145,7 @@ $(function () {
 
             $.ajax({
                     method: "POST",
-                    url: urlController,
+                    url: window.urlController,
                     data: {
                         action: action,
                         data: JSON.stringify(reserva)
@@ -160,7 +160,7 @@ $(function () {
         }
     }
 
-    function alterarPromocao() {
+    window.alterarPromocao = function () {
         let id = $("#idPromo").val();
         let nome = $("#nomePromo").val();
         let descricao = $("#descPromo").val()
@@ -174,7 +174,7 @@ $(function () {
 
             $.ajax({
                     method: "POST",
-                    url: urlController,
+                    url: "../Back/update/updatePromocao.php",
                     data: {
                         action: action,
                         data: JSON.stringify(promocao)

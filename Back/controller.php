@@ -243,61 +243,61 @@ if(isset($action) && !empty($action)){
         echo json_encode($clientes);
     }
     // adicionarPrato
-    if ($function == "insertNewPrato") {
-        $data = $_POST["data"];
+    // if ($function == "insertNewPrato") {
+    //     $data = $_POST["data"];
 
-        $newPrato = json_decode($data, true);
-        $lanchonete = new Lanchonete();
-        $lanchonete->adicionarPrato($newPrato["nome"],$newPrato["valor"],$newPrato["descricao"]);
-    }
+    //     $newPrato = json_decode($data, true);
+    //     $lanchonete = new Lanchonete();
+    //     $lanchonete->adicionarPrato($newPrato["nome"],$newPrato["valor"],$newPrato["descricao"]);
+    // }
     // alterarPrato
-    if ($function == "updatePrato") {
-        $data = $_POST["data"];
+    // if ($function == "updatePrato") {
+    //     $data = $_POST["data"];
 
-        $prato = json_decode($data, true);
-        $lanchonete = new Lanchonete();
-        $lanchonete->alterarPrato($prato["id"],$prato["nome"],$prato["valor"],$prato["descricao"]);
-    }
+    //     $prato = json_decode($data, true);
+    //     $lanchonete = new Lanchonete();
+    //     $lanchonete->alterarPrato($prato["id"],$prato["nome"],$prato["valor"],$prato["descricao"]);
+    // }
     // removerPrato
-    if ($function == "deletePrato") {
-        $data = $_POST["data"];
+    // if ($function == "deletePrato") {
+    //     $data = $_POST["data"];
 
-        $prato = json_decode($data, true);
-        $lanchonete = new Lanchonete();
-        $lanchonete->desativarPrato($prato["id"],$prato['situacao']);
-    }
+    //     $prato = json_decode($data, true);
+    //     $lanchonete = new Lanchonete();
+    //     $lanchonete->desativarPrato($prato["id"],$prato['situacao']);
+    // }
     // adicionarUsuario
-    if ($function == "insertNewUsuario") {
-        $data = $_POST["data"];
+    // if ($function == "insertNewUsuario") {
+    //     $data = $_POST["data"];
 
-        $newUsuario = json_decode($data, true);
-        $usuario = new Usuario();
-        $usuario->adicionarUsuario($newUsuario["nome"],$newUsuario["login"],$newUsuario["senha"]);
-    }
+    //     $newUsuario = json_decode($data, true);
+    //     $usuario = new Usuario();
+    //     $usuario->adicionarUsuario($newUsuario["nome"],$newUsuario["login"],$newUsuario["senha"]);
+    // }
     //alterarUsuario
-    if ($function == "updateUsuario") {
-        $data = $_POST["data"];
+    // if ($function == "updateUsuario") {
+    //     $data = $_POST["data"];
 
-        $usuario = json_decode($data, true);
-        $user = new Usuario();
-        $user->alterarUsuario($usuario["id"],$usuario["nome"],$usuario["login"],$usuario["senha"]);
-    }
-    if ($function == "deleteUsuario") {
-        $data = $_POST["data"];
+    //     $usuario = json_decode($data, true);
+    //     $user = new Usuario();
+    //     $user->alterarUsuario($usuario["id"],$usuario["nome"],$usuario["login"],$usuario["senha"]);
+    // }
+    // if ($function == "deleteUsuario") {
+    //     $data = $_POST["data"];
 
-        $usuario = json_decode($data, true);
-        $user = new Usuario();
-        $user->desativarUsuario($usuario["id"],$usuario['situacao']);
-    }
+    //     $usuario = json_decode($data, true);
+    //     $user = new Usuario();
+    //     $user->desativarUsuario($usuario["id"],$usuario['situacao']);
+    // }
     // aplicarDesconto
-    if ($function == "insertNewPromocao") {
-        $data = $_POST["data"];
+    // if ($function == "insertNewPromocao") {
+    //     $data = $_POST["data"];
 
-        $promocao = json_decode($data, true);
-        $lanchonete = new Lanchonete();
+    //     $promocao = json_decode($data, true);
+    //     $lanchonete = new Lanchonete();
 
-        $lanchonete->aplicarDesconto($promocao['valor'],$promocao['nome'],$promocao['descricao']);
-    }
+    //     $lanchonete->aplicarDesconto($promocao['valor'],$promocao['nome'],$promocao['descricao']);
+    // }
     // verListaDesconto
     if ($function == "selectAllPromocao") {
         $lanchonete = new Lanchonete();
@@ -305,29 +305,29 @@ if(isset($action) && !empty($action)){
         echo json_encode($promocoes);
     }
     // alterarDesconto
-    if ($function == "updatePromocao") {
-        $data = $_POST["data"];
-        $promocao = json_decode($data, true);
+    // if ($function == "updatePromocao") {
+    //     $data = $_POST["data"];
+    //     $promocao = json_decode($data, true);
 
-        $lanchonete = new Lanchonete();
-        $lanchonete->alterarDesconto($promocao['id'],$promocao['valor'],$promocao['nome'],$promocao['descricao']);
-    }
+    //     $lanchonete = new Lanchonete();
+    //     $lanchonete->alterarDesconto($promocao['id'],$promocao['valor'],$promocao['nome'],$promocao['descricao']);
+    // }
     // removerDesconto
-    if ($function == "deletePromocao") {
-        $data = $_POST["data"];
-        $promocao = json_decode($data, true);
+    // if ($function == "deletePromocao") {
+    //     $data = $_POST["data"];
+    //     $promocao = json_decode($data, true);
 
-        $lanchonete = new Lanchonete();
-        $lanchonete->desativarDesconto($promocao["id"],$promocao['situacao']);
-    }
+    //     $lanchonete = new Lanchonete();
+    //     $lanchonete->desativarDesconto($promocao["id"],$promocao['situacao']);
+    // }
     // prepararMesa
-    if ($function == "insertNewMesa") {
-        $data = $_POST["data"];
+    // if ($function == "insertNewMesa") {
+    //     $data = $_POST["data"];
 
-        $mesa = json_decode($data, true);
-        $lanchonete = new Lanchonete();
-        $lanchonete->prepararMesa($mesa['numero'],$mesa['qt_cadeira'],$mesa['descricao'],1);
-    }
+    //     $mesa = json_decode($data, true);
+    //     $lanchonete = new Lanchonete();
+    //     $lanchonete->prepararMesa($mesa['numero'],$mesa['qt_cadeira'],$mesa['descricao'],1);
+    // }
     // verListaMesa
     if ($function == "selectAllMesa") {
         $lanchonete = new Lanchonete();
@@ -335,21 +335,21 @@ if(isset($action) && !empty($action)){
         echo json_encode($mesas);
     }
     // alterarMesa
-    if ($function == "updateMesa") {
-        $data = $_POST["data"];
-        //id, numero, qt_cadeira, descricao, disponibilidade
-        $mesa = json_decode($data, true);
-        $lanchonete = new Lanchonete();
-        $lanchonete->alterarMesa($mesa['id'],$mesa['numero'],$mesa['qt_cadeira'],$mesa['descricao'],1);
-    }
+    // if ($function == "updateMesa") {
+    //     $data = $_POST["data"];
+    //     //id, numero, qt_cadeira, descricao, disponibilidade
+    //     $mesa = json_decode($data, true);
+    //     $lanchonete = new Lanchonete();
+    //     $lanchonete->alterarMesa($mesa['id'],$mesa['numero'],$mesa['qt_cadeira'],$mesa['descricao'],1);
+    // }
     // deletarMesa
-    if ($function == "deleteMesa") {
-        $data = $_POST["data"];
+    // if ($function == "deleteMesa") {
+    //     $data = $_POST["data"];
 
-        $mesa = json_decode($data, true);
-        $lanchonete = new Lanchonete();
-        $lanchonete->desativarMesa($mesa['id'],$mesa['disponibilidade']);
-    }
+    //     $mesa = json_decode($data, true);
+    //     $lanchonete = new Lanchonete();
+    //     $lanchonete->desativarMesa($mesa['id'],$mesa['disponibilidade']);
+    // }
     // verListaReserva
     if ($function == "selectAllReserva") {
         $lanchonete = new Lanchonete();

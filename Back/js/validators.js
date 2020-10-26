@@ -93,10 +93,11 @@ $(function () {
                     },
                     success: function (response) {
                         if (response == "1") {
-                            $("#etapa-realiza-login").slideUp();
+                            $("#etapa-realiza-login").fadeOut();
                             setTimeout(function () {
-                                $("#etapa-pessoas").slideDown();
+                                $("#etapa-pessoas").fadeIn();
                                 $("#etapa-pessoas").css('display', 'flex');
+                                // $("#container-acao").css('background-image', 'url(Icones/background_etapas_genericas.png)');
                             }, 500);
                         } else {
                             alert('Oops! Usuário ou senha incorreto. verifique seu cadastro para continuar!');
